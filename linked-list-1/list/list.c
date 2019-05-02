@@ -11,18 +11,6 @@ node* newNode(int value) {
   return elem;
 }
 
-void push(node* head, int value) {
-  node* elem = newNode(value);
-  if(head == NULL) {
-    head = elem;
-  } else {
-    while(head->next != NULL) {
-      head = head->next;
-    }
-    head->next = elem;
-  }
-}
-
 void print(node* head) {
   while(head != NULL) { 
     printf("%p:%d%s", head, head->data, (head->next == NULL) ? " -> NULL\n" : " -> ");
