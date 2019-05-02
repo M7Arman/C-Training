@@ -2,7 +2,7 @@
 #include "list/list.h"
 
 int main() {
-  node* head = initalize(NULL, 50);
+  node* head = initalize(NULL, 1000000);
   int n = 5;
   printf("\nInitial list....\n");
  /* print(head);

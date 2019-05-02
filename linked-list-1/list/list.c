@@ -77,8 +77,8 @@ node* shuffleN(node* head, int n) {
     return head;
   }
   node* list = head;
-  node** heads = (node**) calloc(n, sizeof(node));
-  node** tails = (node**) calloc(n, sizeof(node));
+  node** heads = (node**) malloc(n * sizeof(node));
+  node** tails = (node**) malloc(n * sizeof(node));
   int i = 0;
   int areHeads = 1;
   for(; list != NULL; list = list->next, ++i) {
