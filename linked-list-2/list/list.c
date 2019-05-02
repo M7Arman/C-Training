@@ -45,6 +45,25 @@ node* reverse(node* list) {
   return list;
 }
 
+node* reverseN(node* list, int n) {
+  int i = 1;
+  int isFirstHead = 1;
+  node* firstHead = NULL;
+  node* tail = NULL;
+  node* head = NULL;
+  for(; NULL != list; list = list->next, ++i) {
+    if(isFirstHead && i == n) {
+      firstHead = list;
+    }
+    if(0 == i) {
+      tail = list;
+      //TODO: continue...
+    }
+      //TODO: continue...
+  }
+  return firstHead;
+}
+
 node* shuffle(node* list) {
   return shuffleN(list, 2);
 }
