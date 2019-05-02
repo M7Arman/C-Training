@@ -13,4 +13,14 @@ void push(node* head, int value);
 
 void print(node* head);
 
+node* initalize(node* head, int n);
+
+node* shuffle(node* list);
+
+node* shuffleN(node* head, int n);
+
+node* reverse(node* list);
+
+long getMicrotime();
+
 #endif
