@@ -18,7 +18,7 @@ void print(node* head) {
   }
 }
 
-node* initalize(node* head, int n) {
+node* initialize(node* head, int n) {
   node* list = head;
   while(n > 0) {
     node* elem = newNode(n);

@@ -13,7 +13,7 @@ void push(node* head, int value);
 
 void print(node* head);
 
-node* initalize(node* head, int n);
+node* initialize(node* head, int n);
 
 node* shuffle(node* list);
 
