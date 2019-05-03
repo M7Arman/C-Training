@@ -12,6 +12,8 @@ void print(node* list);
 
 node* reverse(node* list);
 
+node* reverseN(node* list, int n);
+
 node* shuffle(node* list);
 
 node* shuffleN(node* list, int n);

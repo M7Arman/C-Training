@@ -59,6 +59,10 @@ node* reverseN(node* list, int n) {
       tail = list;
       //TODO: continue...
     }
+    if(0 == i) {
+      tail = list;
+      //TODO: continue...
+    }
       //TODO: continue...
   }
   return firstHead;
