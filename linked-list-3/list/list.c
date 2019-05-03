@@ -38,15 +38,21 @@ node* label(node* list) {
 
 node* reverse(node* list) {
   int n = 0;
-  node* head = list;
+  node* next = NULL;
+  node* prev = NULL;
   while(list != NULL) {
-    list = list->next;
-    ++n;
+    next = list->next;
+    list->next = prev;
+    prev = list;
+    list = next;
   }
-  return reverseN(n, head);
+  return prev;
 }
 
 node* reverseN(int N, node* list) {
+  if(N < 2 || NULL == list) {
+    return list;
+  }
   node* head = NULL;
   node* firstHead = NULL;
   node* tail = NULL;
@@ -77,14 +83,21 @@ node* reverseN(int N, node* list) {
     prevElem = list;
     list = next;
   }
-  if(1 != i && NULL != prevTail) {
-    prevTail->next = prevElem;
+  if(1 != i) {
+    if(NULL != prevTail) {
+      prevTail->next = prevElem;
+    } else {
+      firstHead = prevElem;
+    }
   }
   tail->next = NULL;
   return firstHead;
 }
 
 void print(node* list) {
+  if(NULL == list) {
+    printf("\nList is empty\n\n");
+  }
   for(; list != NULL; list = list->next) {
     printf("%d%s", list->data, NULL == list->next ? "\n" : " -> " );
   }
