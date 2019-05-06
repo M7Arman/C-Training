@@ -122,6 +122,7 @@ node* shuffleN(node* list, int N) {
   }
   node** heads = (node**) malloc(sizeof(node));
   node** tails = (node**) malloc(sizeof(node));
+  node* head = list;
   int isHead = 1;
   int i = 0;
   for(; NULL != list; list = list->next, ++i) {
@@ -138,6 +139,9 @@ node* shuffleN(node* list, int N) {
     }
     (*(tails + i))->next = list;
     *(tails + i) = (*(tails + i))->next;
+  }
+  if(isHead) { /* this means N is bigger than the list size */
+    return head;
   }
   for(i = 0; i < N - 1; ++i) {
     (*(tails + i))->next = (*(heads + i + 1));
