@@ -147,5 +147,8 @@ node* shuffleN(node* list, int N) {
     (*(tails + i))->next = (*(heads + i + 1));
   }
   (*(tails + N - 1))->next = NULL;
-  return *heads;
+  head = *heads;
+  free(tails);
+  free(heads);
+  return head;
 }
