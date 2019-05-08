@@ -8,11 +8,11 @@ int main() {
   printMap(map);*/
   char* key = "hello";
   hashmap* hMap = newHashmap(key, 10);
-  add(hMap, "asd", 7);
-  add(hMap, "211", 8);
-  add(hMap, "212", 5);
-  add(hMap, "as2", 120);
-  add(hMap, "dsa", 101);
+  add(hMap, "Arman", 24);
+  add(hMap, "Vardan", 18);
+  add(hMap, "Ashot", 15);
+  add(hMap, "John", 120);
+  add(hMap, "Max", 101);
 
   print(hMap);
   return 0;

@@ -3,7 +3,7 @@
 #include "./map/map.h"
 
 typedef struct hashmap {
-  map* data[10];
+  map** data;
   unsigned int capacity;
 } hashmap;
 

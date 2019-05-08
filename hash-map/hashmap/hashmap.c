@@ -3,15 +3,15 @@
 #include <limits.h>
 #include "hashmap.h"
 #include "./map/map.h"
+#define TABLE_SIZE 15
 
 unsigned long hash(char* str) {
-  unsigned long hash = 5381;
+  int sum = 0;
   int c;
-
-  while (c = *str++)
-      hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
-
-  return hash % 10; /** return hash; */
+  for (; '\0' != *str; str++) {
+    sum += *str;
+  }
+  return sum % TABLE_SIZE;
 }
 
 hashmap* newHashmap(char* key, int value) {
@@ -19,6 +19,16 @@ hashmap* newHashmap(char* key, int value) {
   if(NULL == hMap) {
     return NULL;
   }
+  map** data = (map**) malloc(sizeof(map*) * TABLE_SIZE);
+  if(NULL == data) {
+    free(hMap);
+    return NULL;
+  }
+  int i;
+  for(i = 0; i < TABLE_SIZE; ++i) {
+    data[i] = NULL;
+  }
+  hMap->data = data;
   unsigned long h = hash(key);
   hMap->data[h] = newMap(key, value);
   return hMap;
@@ -57,7 +67,6 @@ void printRow(map* head) {
 
 map* add(hashmap* hMap, char* key, int value) {
   unsigned long h = hash(key);
-
   map* map = hMap->data[h];
   if(NULL == map) {
     hMap->data[h] = newMap(key, value);
@@ -79,7 +88,7 @@ map* add(hashmap* hMap, char* key, int value) {
 
 void print(hashmap* hashmap) {
   int i;
-  for(i = 0; i < 10; ++i) {
+  for(i = 0; i < TABLE_SIZE; ++i) {
     printf("[%i]\t",i);
     printRow(hashmap->data[i]);
   }
