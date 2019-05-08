@@ -9,7 +9,7 @@ typedef struct hashmap {
 
 hashmap* newHashmap(char* key, int value);
 
-unsigned long hash(char* str);
+unsigned int hash(char* str);
 
 void printRow(map* head);
 

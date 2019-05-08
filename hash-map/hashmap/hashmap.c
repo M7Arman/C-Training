@@ -5,7 +5,7 @@
 #include "./map/map.h"
 #define TABLE_SIZE 15
 
-unsigned long hash(char* str) {
+unsigned int hash(char* str) {
   int sum = 0;
   int c;
   for (; '\0' != *str; str++) {
@@ -29,13 +29,13 @@ hashmap* newHashmap(char* key, int value) {
     data[i] = NULL;
   }
   hMap->data = data;
-  unsigned long h = hash(key);
+  unsigned int h = hash(key);
   hMap->data[h] = newMap(key, value);
   return hMap;
 }
 
 map* get(hashmap* hMap, char* key) {
-  unsigned long h = hash(key);
+  unsigned int h = hash(key);
   map* map = hMap->data[h];
   while(NULL != map) {
     if(map->key == key) {
@@ -66,7 +66,7 @@ void printRow(map* head) {
 }
 
 map* add(hashmap* hMap, char* key, int value) {
-  unsigned long h = hash(key);
+  unsigned int h = hash(key);
   map* map = hMap->data[h];
   if(NULL == map) {
     hMap->data[h] = newMap(key, value);
